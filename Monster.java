@@ -8,4 +8,17 @@ public class Monster extends Character{
 	attack = 1;
     }//end Monster()
 
+    public void specialize() {}
+
+    public void normalize() {}
+
+    public String about() {
+	String retStr = "";
+	retStr += "HP: " + HP + "\n";
+	retStr += "Strength: " + strength + "\n";
+	retStr += "Defense: " + defense + "\n";
+	retStr += "Attack: " + attack;
+	return retStr;
+    }
+    
 }//end class Monster

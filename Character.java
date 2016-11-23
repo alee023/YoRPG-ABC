@@ -1,4 +1,4 @@
-public class Character {
+public abstract class Character {
     //declare instance variables
     protected int HP ;
     protected int strength ;
@@ -33,34 +33,18 @@ public class Character {
 	int Defense = attacked.getDefense() ;	
 		
 	int damage = (int)( strength * attack - Defense ) ;
-	attacked.lowerHP(damage) ;
+	attacked.lowerHP(damage);
         return damage;
     }//end attack()
 
-    public void specialize() {
-	defense = 10 ;
-	attack = 0.8 ;
-    }//end specialize()
+    //prepares Character to perform a special attack
+    public abstract void specialize();
     
     /*prepares the Character to perform a normal attack
       resets defense attribute
       resets attack attribute*/
-    public void normalize() {
-	defense = 20 ;
-	attack = 0.4 ;
-    }//end normalize()
+    public abstract void normalize();
 
-    public static String about ( Character a ) {
-	String retStr = "";
-	if (a.name.length() > 1) {
-	    retStr = "Name: " + a.name;
-	}
-	retStr += "HP: " + a.HP + "\n" ;
-	retStr += "Strength: " + a.strength + "\n" ;
-	retStr += "Defense: " + a.defense + "\n" ;
-	retStr += "Attack: " + a.attack + "\n" ;
-		
-	return retStr ;
-    }
-   
+    public abstract String about();
+    
 } //end class Character

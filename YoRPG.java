@@ -93,6 +93,7 @@ public class YoRPG
 		else if (charac.equals("Dwarf")) {
 		    pat = new Dwarf(name);
 		}
+		System.out.println(pat.about());
 
     }//end newGame()
 

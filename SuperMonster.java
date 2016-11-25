@@ -1,3 +1,5 @@
+//test
+
 public class SuperMonster extends Character {
 
     //default constructor

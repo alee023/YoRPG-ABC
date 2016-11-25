@@ -16,7 +16,7 @@ public class YoRPG
 
     //each round, a [ character ] and a Monster will be instantiated...
     private Character pat;   //Is it man or woman?
-    private Monster smaug; //Friendly generic monster name?
+    private Character smaug; //Friendly generic monster name?
 
     private int moveCount;
     private boolean gameOver;
@@ -93,6 +93,7 @@ public class YoRPG
 		else if (charac.equals("Dwarf")) {
 		    pat = new Dwarf(name);
 		}
+		System.out.println("Selection: " + charac);
 		System.out.println(pat.about());
 
     }//end newGame()
@@ -111,9 +112,19 @@ public class YoRPG
 		if ( Math.random() >= ( difficulty / 3.0 ) )
 			System.out.println( "\nNothing to see here. Move along!" );
 		else {
-			System.out.println( "\nLo, yonder monster approacheth!" );
+			//Give possibility of encountering SuperMonster
+			if (Math.random() >= 0.95) {
+			    smaug = new SuperMonster();}
+			else {
+			    smaug = new Monster();}
 
-			smaug = new Monster();
+			String description;
+			if (smaug.HP == 250) {
+			    description  = " Super Monster ";}
+			else {
+			    description = " Monster ";}
+
+			    System.out.println( "\nLo, yonder" + description + "approacheth!" );
 
 			while( smaug.isAlive() && pat.isAlive() ) {
 
@@ -138,21 +149,21 @@ public class YoRPG
 				System.out.println( "\n" + pat.getName() + " dealt " + d1 +
 				    " points of damage.");
 
-				System.out.println( "\n" + "Ye Olde Monster smacked " + pat.getName() +
+				System.out.println( "\n" + "Ye Olde" + description + "smacked " + pat.getName() +
 				    " for " + d2 + " points of damage.");
 			}//end while
 
 			//option 1: you & the monster perish
 			if ( !smaug.isAlive() && !pat.isAlive() ) {
 				System.out.println( "'Twas an epic battle, to be sure... " + 
-				    "You cut ye olde monster down, but " +
-				    "with its dying breath ye olde monster. " +
+				    "You cut ye olde" + description +  "down, but " +
+				    "with its dying breath ye old " + description + 
 				    "laid a fatal blow upon thy skull." );
 				return false;
 			}
 			//option 2: you slay the beast
 			else if ( !smaug.isAlive() ) {
-				System.out.println( "HuzzaaH! Ye olde monster hath been slain!" );
+				System.out.println( "HuzzaaH! Ye olde" + description + "hath been slain!" );
 				return true;
 			}
 			//option 3: the beast slays you

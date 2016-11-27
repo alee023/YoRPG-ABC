@@ -112,15 +112,22 @@ public class YoRPG
 		if ( Math.random() >= ( difficulty / 3.0 ) )
 			System.out.println( "\nNothing to see here. Move along!" );
 		else {
-			//Give possibility of encountering SuperMonster
-			if (Math.random() >= 0.95) {
+			//Give possibility of encountering SuperMonster and Demon
+		    double randNum = Math.random();
+			if (randNum >= 0.95) {
 			    smaug = new SuperMonster();}
+			else if (randNum >= 0.65) {
+			    smaug = new Demon();
+			}
 			else {
 			    smaug = new Monster();}
 
 			String description;
 			if (smaug.HP == 250) {
 			    description  = " Super Monster ";}
+			else if (smaug.HP == 200) {
+			    description = " Demon ";
+			}
 			else {
 			    description = " Monster ";}
 

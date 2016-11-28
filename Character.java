@@ -32,7 +32,11 @@ public abstract class Character {
     public int attack(Character attacked ) {
 	int Defense = attacked.getDefense() ;	
 		
-	int damage = (int)( strength * attack - Defense ) ;
+	int damage = (int)( strength * attack - Defense );
+
+	//if damage is negative, make it equal to zero
+	if (damage < 0) {
+	    damage = 0;}
 	attacked.lowerHP(damage);
         return damage;
     }//end attack()
